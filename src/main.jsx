@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ErrorPage from './error-page.jsx';
 import Home from './pages/home.jsx';
+import Details from './pages/details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
     element: <Home />,
     errorElement: <ErrorPage />
   },
+  {
+    path: "repoDetails/:repoId",
+    element: <Details />,
+    errorElement: <ErrorPage />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
