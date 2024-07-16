@@ -1,38 +1,16 @@
-// src/Details.jsx
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { RepoContext } from "./repoContext";
 
 const Details = () => {
   const { repoId } = useParams();
+  const { data } = useContext(RepoContext);
   const [repository, setRepository] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://api.github.com/repositories/${repoId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setRepository(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, [repoId]);
-
-  if (loading) {
-    return <div className="text-center mt-10">Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="text-center mt-10 text-red-500">Error: {error.message}</div>;
-  }
+    const repo = data.find(repo => repo.id.toString() === repoId);
+    setRepository(repo);
+  }, [data, repoId]);
 
   if (!repository) {
     return <div className="text-center mt-10">Repository not found</div>;

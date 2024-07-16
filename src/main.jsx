@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import ErrorPage from './error-page.jsx';
-import Home from './pages/home.jsx';
-import Details from './pages/details.jsx';
+import { RepoProvider } from './pages/repoContext';
+import Home from './pages/home';
+import Details from './pages/details';
+import ErrorPage from './error-page';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RepoProvider>
+      <RouterProvider router={router} />
+    </RepoProvider>
   </React.StrictMode>,
-)
+);
