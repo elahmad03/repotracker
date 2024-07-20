@@ -1,6 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { RepoContext } from "./repoContext";
+import { RepoContext } from "../components/repoContext";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 const Details = () => {
   const { repoId } = useParams();
@@ -8,7 +10,7 @@ const Details = () => {
   const [repository, setRepository] = useState(null);
 
   useEffect(() => {
-    const repo = data.find(repo => repo.id.toString() === repoId);
+    const repo = data.find((repo) => repo.id.toString() === repoId);
     setRepository(repo);
   }, [data, repoId]);
 
@@ -17,14 +19,37 @@ const Details = () => {
   }
 
   return (
-    <div className="container mx-auto mt-10">
-      <h1 className="text-3xl font-bold mb-4 text-center">{repository.name}</h1>
-      <div className="bg-white p-4 shadow-md rounded-lg">
-        <p className="text-gray-700">{repository.description}</p>
-        <p className="text-gray-900 font-bold">Language: {repository.language}</p>
-        <p className="text-gray-900 font-bold">Created at: {new Date(repository.created_at).toLocaleDateString()}</p>
+    <>
+      <Header />
+      <div className="container mx-auto mt-10 p-4">
+        <h1 className="text-3xl font-bold mb-4 text-center text-white">
+          {repository.name}
+        </h1>
+        <div className="bg-blue-500 dark:bg-black p-6 shadow-md rounded-lg">
+          <p className="text-white mb-2">{repository.description}</p>
+          <div className="flex justify-between mb-4">
+            <p
+              className="text-white
+             font-bold"
+            >
+              Author: {repository.author}
+            </p>
+            <p className="text-gray-100 font-bold">
+              Language: {repository.language}
+            </p>
+          </div>
+          <div className="flex justify-between mb-4">
+            <p className="text-white font-bold">
+              Created at: {new Date(repository.created_at).toLocaleDateString()}
+            </p>
+            <p className="text-white font-bold">Issues: {repository.open_issues_count}</p>
+          </div>
+          <p className="text-white font-bold">Stars: {repository.stargazers_count}</p>
+          <p className="text-white font-bold">Forks: {repository.forks_count}</p>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

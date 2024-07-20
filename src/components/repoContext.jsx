@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 
 export const RepoContext = createContext();
 
@@ -6,9 +6,9 @@ export const RepoProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [user] = useState("elahmad03");
+  const [user, setUser] = useState("elahmad03");
   const [page, setPage] = useState(1);
-  const perPage = 10; // Number of repos per page, adjust as needed
+  const perPage = 10;
 
   const fetchData = useCallback(() => {
     setLoading(true);
@@ -34,7 +34,7 @@ export const RepoProvider = ({ children }) => {
   }, [fetchData]);
 
   return (
-    <RepoContext.Provider value={{ data, loading, error, page, setPage, fetchData }}>
+    <RepoContext.Provider value={{ data, loading, error, page, setPage, fetchData, setUser }}>
       {children}
     </RepoContext.Provider>
   );
