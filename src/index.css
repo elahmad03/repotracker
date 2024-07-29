@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* default styles */
+body{
+    background: blueviolet;
+    color: white;
+    margin: 0 auto;
+    padding: 0;
+}
+input{
+    background: lightblue;
+    color: blue;
+    offset: none;
+    border: none;
+}
+input:hover, input:focus{
+    border: none;
+}

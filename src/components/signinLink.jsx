@@ -1,8 +1,19 @@
+// signinLink.js
+import PropTypes from 'prop-types';
 
-function signinLink() {
+const SigninLink = ({ onSignOut }) => {
   return (
-    <div>signinLink</div>
-  )
-}
+    <button
+      onClick={onSignOut}
+      className="ml-4 bg-red-500 text-white py-2 px-4 rounded"
+    >
+      Sign Out
+    </button>
+  );
+};
 
-export default signinLink
+SigninLink.propTypes = {
+  onSignOut: PropTypes.func.isRequired,
+};
+
+export default SigninLink;

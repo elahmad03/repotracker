@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => (
-  <footer className="bg-blue-700 dark:bg-black text-white p-4 shadow-md mt-10">
+  <footer className="bg-blue-700 dark:bg-gray-800 text-white p-4 shadow-md mt-10">
     <div className="container mx-auto flex justify-between items-center">
       <p>&copy; 2024 Repotracker</p>
       <div className="flex space-x-4">

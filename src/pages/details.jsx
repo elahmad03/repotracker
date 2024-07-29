@@ -25,15 +25,9 @@ const Details = () => {
         <h1 className="text-3xl font-bold mb-4 text-center text-white">
           {repository.name}
         </h1>
-        <div className="bg-blue-500 dark:bg-black p-6 shadow-md rounded-lg">
+        <div className="bg-blue-500 dark:bg-gray-700 p-6 shadow-md rounded-lg">
           <p className="text-white mb-2">{repository.description}</p>
           <div className="flex justify-between mb-4">
-            <p
-              className="text-white
-             font-bold"
-            >
-              Author: {repository.author}
-            </p>
             <p className="text-gray-100 font-bold">
               Language: {repository.language}
             </p>
